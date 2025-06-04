@@ -1,0 +1,176 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2024-06-08T00:00:00.000Z",
+  "__export_source": "insomnia.desktop.app:v2024.2.0",
+  "resources": [
+    {
+      "_id": "wrk_1",
+      "name": "API Productos y Categorías",
+      "description": "",
+      "_type": "workspace"
+    },
+    {
+      "_id": "env_1",
+      "parentId": "wrk_1",
+      "_type": "environment",
+      "name": "Base Environment",
+      "data": {
+        "base_url": "http://localhost:8080",
+        "jwt_token": ""
+      }
+    },
+    {
+      "_id": "req_login",
+      "parentId": "wrk_1",
+      "_type": "request",
+      "name": "Login SUPER_ADMIN",
+      "method": "POST",
+      "url": "{{ base_url }}/auth/login",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"email\": \"superadmin@email.com\",\n  \"password\": \"superadmin123\"\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ]
+    },
+    {
+      "_id": "req_listar_productos",
+      "parentId": "wrk_1",
+      "_type": "request",
+      "name": "Listar Productos",
+      "method": "GET",
+      "url": "{{ base_url }}/productos",
+      "headers": []
+    },
+    {
+      "_id": "req_listar_categorias",
+      "parentId": "wrk_1",
+      "_type": "request",
+      "name": "Listar Categorías",
+      "method": "GET",
+      "url": "{{ base_url }}/categorias",
+      "headers": []
+    },
+    {
+      "_id": "req_registrar_categoria",
+      "parentId": "wrk_1",
+      "_type": "request",
+      "name": "Registrar Categoría",
+      "method": "POST",
+      "url": "{{ base_url }}/categorias",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"nombre\": \"Electrónica\",\n  \"descripcion\": \"Productos electrónicos\"\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ jwt_token }}"
+        }
+      ]
+    },
+    {
+      "_id": "req_registrar_producto",
+      "parentId": "wrk_1",
+      "_type": "request",
+      "name": "Registrar Producto",
+      "method": "POST",
+      "url": "{{ base_url }}/productos",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"nombre\": \"Laptop\",\n  \"descripcion\": \"Portátil de alto rendimiento\",\n  \"precio\": 1500.0,\n  \"cantidadStock\": 10,\n  \"categoria\": { \"id\": 1 }\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ jwt_token }}"
+        }
+      ]
+    },
+    {
+      "_id": "req_actualizar_categoria",
+      "parentId": "wrk_1",
+      "_type": "request",
+      "name": "Actualizar Categoría",
+      "method": "PUT",
+      "url": "{{ base_url }}/categorias/1",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"nombre\": \"Electrodomésticos\",\n  \"descripcion\": \"Productos para el hogar\"\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ jwt_token }}"
+        }
+      ]
+    },
+    {
+      "_id": "req_actualizar_producto",
+      "parentId": "wrk_1",
+      "_type": "request",
+      "name": "Actualizar Producto",
+      "method": "PUT",
+      "url": "{{ base_url }}/productos/1",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"nombre\": \"Laptop Pro\",\n  \"descripcion\": \"Portátil profesional\",\n  \"precio\": 2000.0,\n  \"cantidadStock\": 5,\n  \"categoria\": { \"id\": 1 }\n}"
+      },
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ jwt_token }}"
+        }
+      ]
+    },
+    {
+      "_id": "req_borrar_categoria",
+      "parentId": "wrk_1",
+      "_type": "request",
+      "name": "Borrar Categoría",
+      "method": "DELETE",
+      "url": "{{ base_url }}/categorias/1",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ jwt_token }}"
+        }
+      ]
+    },
+    {
+      "_id": "req_borrar_producto",
+      "parentId": "wrk_1",
+      "_type": "request",
+      "name": "Borrar Producto",
+      "method": "DELETE",
+      "url": "{{ base_url }}/productos/1",
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {{ jwt_token }}"
+        }
+      ]
+    }
+  ]
+}
