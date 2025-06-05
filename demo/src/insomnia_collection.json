@@ -24,12 +24,12 @@
       "_id": "req_login",
       "parentId": "wrk_1",
       "_type": "request",
-      "name": "Login SUPER_ADMIN",
+      "name": "Login",
       "method": "POST",
       "url": "{{ base_url }}/auth/login",
       "body": {
         "mimeType": "application/json",
-        "text": "{\n  \"email\": \"superadmin@email.com\",\n  \"password\": \"superadmin123\"\n}"
+        "text": "{\n  \"email\": \"super.admin@gmail.com\",\n  \"password\": \"superadmin123\"\n}"
       },
       "headers": [
         {

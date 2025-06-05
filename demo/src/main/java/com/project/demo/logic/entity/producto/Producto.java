@@ -1,5 +1,6 @@
 package com.project.demo.logic.entity.producto;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.project.demo.logic.entity.categoria.Categoria;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -27,6 +28,7 @@ public class Producto {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "categoria_id", referencedColumnName = "id")
+    @JsonBackReference
     private Categoria categoria;
 
     @CreationTimestamp

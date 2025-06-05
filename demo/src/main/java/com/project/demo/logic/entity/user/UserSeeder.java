@@ -29,16 +29,6 @@ public class UserSeeder implements ApplicationListener<ContextRefreshedEvent> {
     }
 
     private void loadUsers() {
-        Optional<Role> superAdminRole = roleRepository.findByName(RoleEnum.SUPER_ADMIN);
-        if (superAdminRole.isPresent() && userRepository.findByEmail("superadmin@email.com").isEmpty()) {
-            User superAdmin = new User();
-            superAdmin.setName("Luis");
-            superAdmin.setLastname("SuperAdmin");
-            superAdmin.setEmail("superadmin@email.com");
-            superAdmin.setPassword(passwordEncoder.encode("superadmin123"));
-            superAdmin.setRole(superAdminRole.get());
-            userRepository.save(superAdmin);
-        }
 
         Optional<Role> userRole = roleRepository.findByName(RoleEnum.USER);
         if (userRole.isPresent() && userRepository.findByEmail("user@email.com").isEmpty()) {

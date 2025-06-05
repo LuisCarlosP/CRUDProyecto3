@@ -1,5 +1,7 @@
 package com.project.demo.logic.entity.categoria;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.project.demo.logic.entity.producto.Producto;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -28,7 +30,8 @@ public class Categoria {
     private Date updatedAt;
 
     @OneToMany(mappedBy = "categoria")
-    private List<com.project.demo.logic.entity.producto.Producto> productos;
+    @JsonManagedReference
+    private List<Producto> productos;
 
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
