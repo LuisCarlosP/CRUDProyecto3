@@ -29,7 +29,7 @@ public class Categoria {
     @Column(name = "updated_at")
     private Date updatedAt;
 
-    @OneToMany(mappedBy = "categoria")
+    @OneToMany(mappedBy = "categoria", fetch = FetchType.EAGER)
     @JsonManagedReference
     private List<Producto> productos;
 

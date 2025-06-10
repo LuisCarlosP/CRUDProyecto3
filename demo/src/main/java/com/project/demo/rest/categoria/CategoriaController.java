@@ -4,6 +4,7 @@ import com.project.demo.logic.entity.categoria.Categoria;
 import com.project.demo.logic.entity.categoria.CategoriaRepository;
 import com.project.demo.logic.entity.http.GlobalResponseHandler;
 import com.project.demo.logic.entity.http.Meta;
+import com.project.demo.logic.entity.producto.ProductoRepository;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -22,6 +23,9 @@ public class CategoriaController {
 
     @Autowired
     private CategoriaRepository categoriaRepository;
+
+    @Autowired
+    private ProductoRepository productoRepository;
 
     @GetMapping
     public ResponseEntity<?> getAllCategorias(
@@ -84,8 +88,9 @@ public class CategoriaController {
     public ResponseEntity<?> deleteCategoria(@PathVariable Long id, HttpServletRequest request) {
         Optional<Categoria> categoria = categoriaRepository.findById(id);
         if (categoria.isPresent()) {
+            productoRepository.deleteAll(productoRepository.findByCategoriaId(id));
             categoriaRepository.deleteById(id);
-            return new GlobalResponseHandler().handleResponse("Categoria deleted successfully",
+            return new GlobalResponseHandler().handleResponse("Categoria y productos asociados eliminados exitosamente",
                     categoria.get(), HttpStatus.OK, request);
         } else {
             return new GlobalResponseHandler().handleResponse("Categoria id " + id + " not found",

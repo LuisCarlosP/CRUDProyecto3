@@ -26,8 +26,8 @@ public class Producto {
     @Column(name = "cantidad_stock", nullable = false)
     private Integer cantidadStock;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "categoria_id", referencedColumnName = "id")
+    @ManyToOne(optional = true)
+    @JoinColumn(name = "categoria_id", referencedColumnName = "id", nullable = true)
     @JsonBackReference
     private Categoria categoria;
 
